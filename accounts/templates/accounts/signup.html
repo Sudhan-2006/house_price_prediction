@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+<div class="container py-5" style="min-height: 80vh; display: flex; align-items: center;">
+    <div class="row justify-content-center w-100">
+        <div class="col-md-6" data-aos="fade-up">
+            <div class="glass-card p-5 shadow-lg border-0 rounded-4">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold">Create your account</h2>
+                    <p class="text-muted">Start predicting in seconds</p>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="mb-3">
+                            <label class="form-label">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.help_text %}<small class="form-text text-muted">{{ field.help_text }}</small>{% endif %}
+                            {% for error in field.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-accent btn-lg w-100 mt-3">Sign Up</button>
+                </form>
+                <p class="text-center mt-3">Already have an account? <a href="{% url 'login' %}" class="text-accent">Login</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

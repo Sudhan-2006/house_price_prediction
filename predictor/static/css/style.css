@@ -1,0 +1,469 @@
+/* ===========================
+   Google Font
+=========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ===========================
+   Root Colors
+=========================== */
+:root{
+    --primary:#4F46E5;
+    --secondary:#7C3AED;
+    --accent:#06B6D4;
+    --dark:#0F172A;
+    --light:#F8FAFC;
+    --white:#ffffff;
+    --text:#475569;
+    --border:rgba(255,255,255,.15);
+}
+
+/* ===========================
+   Body & Animated Background
+=========================== */
+body{
+    font-family:'Poppins',sans-serif;
+    background:#F8FAFC;
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:700px;
+    height:700px;
+    background:linear-gradient(135deg,#4F46E5,#06B6D4);
+    filter:blur(180px);
+    opacity:.18;
+    top:-250px;
+    right:-200px;
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:#7C3AED;
+    filter:blur(180px);
+    opacity:.12;
+    bottom:-200px;
+    left:-150px;
+    z-index:-2;
+}
+
+/* ===========================
+   Navbar
+=========================== */
+.glass-navbar{
+    background:rgba(255,255,255,.65);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.2);
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+    transition:.4s;
+    padding:14px 0;
+}
+
+.navbar-brand{
+    font-size:1.4rem;
+    font-weight:700;
+}
+
+.text-gradient{
+    background:linear-gradient(135deg,#4F46E5,#06B6D4);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.text-accent{
+    color:#06B6D4;
+}
+
+.nav-link{
+    font-weight:500;
+    margin-left:18px;
+    color:#334155 !important;
+    transition:.3s;
+}
+
+.nav-link:hover{
+    color:#4F46E5 !important;
+}
+
+/* ===========================
+   Buttons
+=========================== */
+.btn{
+    border-radius:50px;
+    padding:12px 28px;
+    font-weight:600;
+    transition:.35s;
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,#4F46E5,#7C3AED);
+    border:none;
+    color:white;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 30px rgba(79,70,229,.35);
+}
+
+.btn-accent{
+    background:linear-gradient(135deg,#06B6D4,#4F46E5);
+    color:white;
+    border:none;
+}
+
+.btn-accent:hover{
+    color:white;
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(6,182,212,.35);
+}
+
+.btn-outline-primary{
+    border:2px solid #4F46E5;
+    color:#4F46E5;
+    background: transparent;
+}
+
+.btn-outline-primary:hover{
+    background:#4F46E5;
+    color:white;
+}
+
+.btn-outline-secondary{
+    border-radius:50px;
+}
+
+.btn-group-sm .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    border-radius: 20px;
+}
+
+/* ===========================
+   Hero (Landing)
+=========================== */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    background: radial-gradient(circle at 20% 80%, rgba(79,70,229,0.2) 0%, transparent 50%),
+                linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+    color:white;
+}
+
+.hero h1{
+    font-size:4rem;
+    font-weight:800;
+}
+
+.hero p{
+    color:#e2e8f0;
+    font-size:1.2rem;
+}
+
+/* ===========================
+   Glass Cards (used on landing etc.)
+=========================== */
+.glass-card{
+    background:rgba(255,255,255,.72);
+    backdrop-filter:blur(16px);
+    border-radius:24px;
+    border:1px solid rgba(255,255,255,.25);
+    box-shadow:0 20px 50px rgba(15,23,42,.08);
+    transition:.35s;
+}
+
+.glass-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 25px 55px rgba(79,70,229,.15);
+}
+
+/* ===========================
+   Sidebars (Professional Dark)
+=========================== */
+.user-sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #312E81 0%, #1E1B4B 100%);
+    color: #fff;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.admin-sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #1E1B4B 0%, #0F172A 100%);
+    color: #fff;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.sidebar-brand a {
+    color: white;
+    text-decoration: none;
+}
+
+.user-sidebar .nav-link,
+.admin-sidebar .nav-link {
+    color: rgba(255,255,255,0.6);
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    margin-bottom: 2px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.user-sidebar .nav-link:hover,
+.admin-sidebar .nav-link:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.1);
+}
+
+.user-sidebar .nav-link.active,
+.admin-sidebar .nav-link.active {
+    background: linear-gradient(135deg, #06B6D4, #4F46E5);
+    color: #fff !important;
+    box-shadow: 0 4px 10px rgba(6,182,212,0.4);
+}
+
+.user-sidebar hr,
+.admin-sidebar hr {
+    border-color: rgba(255,255,255,0.15);
+}
+
+/* ===========================
+   Layout
+=========================== */
+.app-layout {
+    min-height: 100vh;
+}
+
+.main-content {
+    flex-grow: 1;
+    min-height: 100vh;
+}
+
+.top-header {
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+/* ===========================
+   Admin Theme (Light & Clean)
+=========================== */
+.admin-content {
+    background: #ffffff !important;
+}
+
+.admin-content .card,
+.admin-content .glass-card {
+    background: #ffffff !important;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    border-radius: 1rem;
+    color: #1E293B !important;
+}
+
+.admin-content .card h1,
+.admin-content .card h2,
+.admin-content .card h3,
+.admin-content .card h4,
+.admin-content .card h5,
+.admin-content .card h6,
+.admin-content .glass-card h1,
+.admin-content .glass-card h2,
+.admin-content .glass-card h3,
+.admin-content .glass-card h4,
+.admin-content .glass-card h5,
+.admin-content .glass-card h6 {
+    color: #0F172A !important;
+}
+
+.admin-content .card p,
+.admin-content .card .text-muted,
+.admin-content .glass-card p,
+.admin-content .glass-card .text-muted {
+    color: #475569 !important;
+}
+
+.admin-content .list-group-item {
+    background: transparent;
+    border-bottom: 1px solid #E2E8F0;
+    color: #334155;
+}
+
+/* ===========================
+   User Theme (Soft Indigo Tint)
+=========================== */
+.user-content {
+    background: #EEF2FF !important;   /* very light indigo */
+}
+
+.user-content .card,
+.user-content .glass-card {
+    background: #ffffff !important;
+    border: 1px solid #E0E7FF;
+    box-shadow: 0 4px 12px rgba(79,70,229,0.05);
+    border-radius: 1rem;
+    color: #1E293B !important;
+}
+
+.user-content .card h1,
+.user-content .card h2,
+.user-content .card h3,
+.user-content .card h4,
+.user-content .card h5,
+.user-content .card h6,
+.user-content .glass-card h1,
+.user-content .glass-card h2,
+.user-content .glass-card h3,
+.user-content .glass-card h4,
+.user-content .glass-card h5,
+.user-content .glass-card h6 {
+    color: #0F172A !important;
+}
+
+.user-content .card p,
+.user-content .card .text-muted,
+.user-content .glass-card p,
+.user-content .glass-card .text-muted {
+    color: #475569 !important;
+}
+
+.user-content .list-group-item {
+    background: transparent;
+    border-bottom: 1px solid #E0E7FF;
+    color: #334155;
+}
+
+/* ===========================
+   Steps
+=========================== */
+.step-circle{
+    width:70px;
+    height:70px;
+    background:linear-gradient(135deg,#4F46E5,#06B6D4);
+    color:white;
+    font-size:1.8rem;
+    font-weight:bold;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto;
+}
+
+/* ===========================
+   Result Card
+=========================== */
+.result-card{
+    border-left:5px solid #4F46E5;
+}
+
+/* ===========================
+   Section Padding
+=========================== */
+.section-padding{
+    padding:5rem 0;
+}
+
+/* ===========================
+   FAQ
+=========================== */
+.faq-item{
+    background:transparent;
+    border:none;
+}
+
+.faq-item .accordion-button{
+    background:rgba(255,255,255,.7);
+    border-radius:0.5rem;
+}
+
+.bg-gradient-primary{
+    background:linear-gradient(135deg,#4F46E5,#7C3AED);
+}
+
+/* ===========================
+   Floating icon
+=========================== */
+.hero-illustration{
+    position:relative;
+}
+
+.floating-house{
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{ transform:translateY(0); }
+    50%{ transform:translateY(-15px); }
+    100%{ transform:translateY(0); }
+}
+
+/* ===========================
+   Footer
+=========================== */
+.footer{
+    background:#0F172A !important;
+}
+
+.footer a{
+    text-decoration:none;
+    transition:.3s;
+}
+
+.footer a:hover{
+    color:white !important;
+    padding-left:5px;
+}
+
+/* ===========================
+   Scrollbar
+=========================== */
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#4F46E5;
+    border-radius:10px;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+@media(max-width:992px){
+    .hero h1{
+        font-size:2.7rem;
+    }
+    .user-sidebar,
+    .admin-sidebar {
+        display:none;
+    }
+}
+
+@media(max-width:576px){
+    .hero h1{
+        font-size:2rem;
+    }
+    .hero p{
+        font-size:1rem;
+    }
+}

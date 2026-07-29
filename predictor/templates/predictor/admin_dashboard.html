@@ -1,0 +1,67 @@
+{% extends 'predictor/admin_base.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<div class="row g-4">
+    <div class="col-md-3"><div class="glass-card p-4 text-center"><i class="bi bi-people display-5 text-primary"></i><h2>{{ total_users }}</h2><p>Total Users</p></div></div>
+    <div class="col-md-3"><div class="glass-card p-4 text-center"><i class="bi bi-bar-chart display-5 text-success"></i><h2>{{ total_predictions }}</h2><p>Predictions</p></div></div>
+    <div class="col-md-3"><div class="glass-card p-4 text-center"><i class="bi bi-cpu display-5 text-info"></i><h2>{{ total_models }}</h2><p>ML Models</p></div></div>
+    <div class="col-md-3"><div class="glass-card p-4 text-center"><i class="bi bi-person-check display-5 text-warning"></i><p>Latest User: <strong>{{ latest_predictions.0.user.username|default:"N/A" }}</strong></p></div></div>
+
+    <div class="col-md-3"><div class="glass-card p-4 text-center"><i class="bi bi-calendar-check display-5 text-primary"></i><h2>{{ total_predictions }}</h2><p>Today's Predictions (demo)</p></div></div>
+    <div class="col-md-3"><div class="glass-card p-4 text-center"><i class="bi bi-geo-alt-fill display-5 text-success"></i><p>Most Predicted: <strong>{{ chart_labels.0 }}</strong></p></div></div>
+    <div class="col-md-3"><div class="glass-card p-4 text-center"><i class="bi bi-cash-stack display-5 text-info"></i><p>Avg Price: <strong>$450,000</strong></p></div></div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-lg-6">
+        <div class="glass-card p-4"><h5>Predictions by Location</h5><canvas id="adminPieChart" height="200"></canvas></div>
+    </div>
+    <div class="col-lg-6">
+        <div class="glass-card p-4"><h5>Monthly Predictions</h5><canvas id="monthlyChart" height="200"></canvas></div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-lg-6">
+        <div class="glass-card p-4"><h5>Latest 10 Predictions</h5>
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead><tr><th>User</th><th>Location</th><th>Price</th></tr></thead>
+                    <tbody>
+                        {% for p in latest_predictions %}
+                        <tr><td>{{ p.user.username }}</td><td>{{ p.location }}</td><td>${{ p.predicted_price }}</td></tr>
+                        {% empty %}<tr><td colspan="3">No predictions</td></tr>{% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="glass-card p-4"><h5>Recent Registered Users</h5>
+            <ul class="list-group list-group-flush">
+                {% for u in latest_predictions|slice:":5" %}
+                <li class="list-group-item bg-transparent">{{ u.user.username }} ({{ u.user.date_joined|date:"M d" }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    new Chart(document.getElementById('adminPieChart'), {
+        type: 'doughnut',
+        data: {
+            labels: JSON.parse('{{ chart_labels|escapejs }}'),
+            datasets: [{ data: JSON.parse('{{ chart_data|escapejs }}'), backgroundColor: ['#4F46E5','#7C3AED','#06B6D4','#22C55E','#F59E0B'] }]
+        }
+    });
+    new Chart(document.getElementById('monthlyChart'), {
+        type: 'line',
+        data: {
+            labels: ['Jan','Feb','Mar','Apr','May','Jun'],
+            datasets: [{ label: 'Predictions', data: [30,45,38,60,55,70], borderColor: '#7C3AED' }]
+        }
+    });
+</script>
+{% endblock %}

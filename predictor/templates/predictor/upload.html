@@ -1,0 +1,12 @@
+{% extends 'predictor/user_base.html' %}
+{% block title %}CSV Upload{% endblock %}
+{% block page_title %}Batch Prediction{% endblock %}
+{% block content %}
+<div class="glass-card p-4">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Upload & Predict</button>
+    </form>
+</div>
+{% endblock %}

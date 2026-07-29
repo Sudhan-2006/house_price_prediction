@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="glass-card p-5">
+                <div class="text-center mb-4">
+                    <i class="bi bi-person-circle display-1 text-primary"></i>
+                    <h3 class="mt-2">{{ user.username }}</h3>
+                </div>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text" class="form-control" value="{{ user.username }}" disabled>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" value="{{ user.email }}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" name="phone" class="form-control" placeholder="Enter phone number">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Profile Picture</label>
+                            <input type="file" name="profile_pic" class="form-control">
+                        </div>
+                    </div>
+                    <hr>
+                    <h5>Change Password</h5>
+                    <div class="row">
+                        <div class="col-md-4 mb-3"><input type="password" name="old_password" class="form-control" placeholder="Current Password"></div>
+                        <div class="col-md-4 mb-3"><input type="password" name="new_password1" class="form-control" placeholder="New Password"></div>
+                        <div class="col-md-4 mb-3"><input type="password" name="new_password2" class="form-control" placeholder="Confirm New Password"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Update Profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

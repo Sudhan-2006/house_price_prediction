@@ -1,0 +1,14 @@
+{% extends 'predictor/admin_base.html' %}
+{% block title %}Dataset Management{% endblock %}
+{% block content %}
+<div class="glass-card p-4">
+    <h4 class="mb-4"><i class="bi bi-database me-2"></i>Dataset Management</h4>
+    {% if message %}<div class="alert alert-info">{{ message|linebreaks }}</div>{% endif %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Upload & Replace Dataset</button>
+    </form>
+    <p class="mt-3 text-muted"><strong>Note:</strong> Uploading a new CSV will overwrite <code>house_data.csv</code> and automatically retrain all models.</p>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'predictor/admin_base.html' %}
+{% block title %}Reports{% endblock %}
+{% block content %}
+<div class="glass-card p-4">
+    <h4 class="mb-4"><i class="bi bi-file-earmark-text me-2"></i>Download Reports</h4>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="glass-card p-3 text-center">
+                <i class="bi bi-filetype-csv display-4 text-success mb-3"></i>
+                <h5>All Predictions (CSV)</h5>
+                <a href="{% url 'admin_csv_download' %}" class="btn btn-success mt-2"><i class="bi bi-download"></i> Download</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="glass-card p-3 text-center">
+                <i class="bi bi-file-earmark-pdf display-4 text-danger mb-3"></i>
+                <h5>User Report (PDF)</h5>
+                <a href="{% url 'admin_pdf_report' %}" class="btn btn-danger mt-2">
+                  <i class="bi bi-download"></i> Download PDF
+                </a>
+        </div>
+        <div class="col-md-4">
+            <div class="glass-card p-3 text-center">
+                <i class="bi bi-bar-chart display-4 text-primary mb-3"></i>
+                <h5>Analytics Report</h5>
+                <a href="{% url 'analytics_pdf_report' %}" class="btn btn-primary mt-2">
+                  <i class="bi bi-download"></i> Download Analytics
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

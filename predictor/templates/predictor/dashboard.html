@@ -1,0 +1,91 @@
+{% extends 'predictor/user_base.html' %}
+{% block title %}User Dashboard{% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+{% block content %}
+<div class="row g-4">
+    <!-- Welcome Card -->
+    <div class="col-12">
+        <div class="card border-0 shadow-sm p-4 d-flex flex-md-row justify-content-between align-items-center">
+            <div>
+                <h4 class="fw-bold mb-1">👋 Welcome back, {{ user.username }}!</h4>
+                <p class="text-muted mb-0">Here's what's happening with your predictions today.</p>
+            </div>
+            <a href="{% url 'predict' %}" class="btn btn-accent mt-3 mt-md-0">Quick Prediction</a>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm p-4 text-center" data-aos="fade-up">
+            <i class="bi bi-bar-chart-fill display-5 text-primary"></i>
+            <h2 class="mt-2 fw-bold">{{ total }}</h2>
+            <p class="text-muted">Total Predictions</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm p-4 text-center" data-aos="fade-up" data-aos-delay="100">
+            <i class="bi bi-graph-up-arrow display-5 text-success"></i>
+            <h2 class="mt-2 fw-bold">{{ best_r2 }}</h2>
+            <p class="text-muted">Model R² Score</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm p-4 text-center" data-aos="fade-up" data-aos-delay="200">
+            <i class="bi bi-cash-coin display-5 text-info"></i>
+            <h2 class="mt-2 fw-bold">{% if last_pred %}${{ last_pred.predicted_price }}{% else %}--{% endif %}</h2>
+            <p class="text-muted">Last Prediction</p>
+        </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm p-4">
+            <h5 class="fw-bold mb-3"><i class="bi bi-activity me-2"></i>Recent Activity</h5>
+            {% if last_pred %}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-transparent px-0">📍 {{ last_pred.location }} – <strong>${{ last_pred.predicted_price }}</strong></li>
+                    <li class="list-group-item bg-transparent px-0 text-muted small">{{ last_pred.created_at|date:"M d, Y H:i" }}</li>
+                </ul>
+            {% else %}
+                <p class="text-muted">No predictions yet. <a href="{% url 'predict' %}">Make your first one!</a></p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Prediction Chart (placeholder) -->
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm p-4">
+            <h5 class="fw-bold mb-3"><i class="bi bi-graph-up me-2"></i>Prediction Trend</h5>
+            <canvas id="userPredChart" height="150"></canvas>
+        </div>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="col-12">
+        <div class="card border-0 shadow-sm p-4">
+            <h5 class="fw-bold"><i class="bi bi-person-circle me-2"></i>Your Profile</h5>
+            <p><strong>Username:</strong> {{ user.username }} | <strong>Email:</strong> {{ user.email }}</p>
+            <a href="{% url 'profile' %}" class="btn btn-outline-primary btn-sm">Edit Profile</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Dummy chart – connect real data when available
+    const ctx = document.getElementById('userPredChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan','Feb','Mar','Apr','May'],
+            datasets: [{
+                label: 'Predicted Price ($)',
+                data: [250000, 260000, 245000, 270000, 255000],
+                borderColor: '#4F46E5',
+                tension: 0.2
+            }]
+        }
+    });
+</script>
+{% endblock %}

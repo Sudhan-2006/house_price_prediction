@@ -1,0 +1,262 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}HousePredictor Pro – AI Price Predictions{% endblock %}
+
+{% block extra_head %}
+<style>
+    .hero {
+        background: radial-gradient(circle at 20% 80%, rgba(79,70,229,0.2) 0%, transparent 50%),
+                    linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+    }
+    .section-padding { padding: 5rem 0; }
+    .faq-item { background: transparent; border: none; }
+    .faq-item .accordion-button { background: rgba(255,255,255,0.7); border-radius: 0.5rem; }
+    .bg-gradient-primary { background: linear-gradient(135deg, #4F46E5, #7C3AED); }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero -->
+<section class="hero text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <h1 class="display-3 fw-bold mb-4">
+                    AI Powered <span class="text-accent">House Price</span> Prediction
+                </h1>
+                <p class="lead mb-4 opacity-75">Predict property prices in seconds using advanced machine learning. Accurate, fast, and incredibly easy.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{% url 'signup' %}" class="btn btn-accent btn-lg px-5 py-3 shadow-accent">Get Started Free</a>
+                    <a href="#how-it-works" class="btn btn-outline-light btn-lg px-5 py-3">Watch Demo</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center" data-aos="fade-left">
+                <div class="hero-illustration">
+                    <div class="floating-house">
+                        <i class="bi bi-house-check-fill display-1 text-accent"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section id="features" class="section-padding bg-white">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Why HousePredictor Pro?</h2>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="zoom-in">
+                <div class="glass-card p-4 text-center h-100">
+                    <div class="icon-box mb-3"><i class="bi bi-cpu-fill display-5 text-primary"></i></div>
+                    <h5>AI Models</h5>
+                    <p class="text-muted">Three models compared, Random Forest with 98% R².</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                <div class="glass-card p-4 text-center h-100">
+                    <div class="icon-box mb-3"><i class="bi bi-graph-up-arrow display-5 text-success"></i></div>
+                    <h5>Analytics</h5>
+                    <p class="text-muted">Beautiful dashboards with charts and insights.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="glass-card p-4 text-center h-100">
+                    <div class="icon-box mb-3"><i class="bi bi-file-earmark-pdf-fill display-5 text-danger"></i></div>
+                    <h5>PDF Reports</h5>
+                    <p class="text-muted">Download detailed prediction reports instantly.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+                <div class="glass-card p-4 text-center h-100">
+                    <div class="icon-box mb-3"><i class="bi bi-cloud-upload-fill display-5 text-info"></i></div>
+                    <h5>Batch CSV</h5>
+                    <p class="text-muted">Upload a file and get predictions for thousands.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+                <div class="glass-card p-4 text-center h-100">
+                    <div class="icon-box mb-3"><i class="bi bi-shield-check-fill display-5 text-secondary"></i></div>
+                    <h5>Secure</h5>
+                    <p class="text-muted">Your data stays private with user authentication.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="500">
+                <div class="glass-card p-4 text-center h-100">
+                    <div class="icon-box mb-3"><i class="bi bi-phone-fill display-5 text-warning"></i></div>
+                    <h5>Responsive</h5>
+                    <p class="text-muted">Works flawlessly on all devices.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section id="how-it-works" class="section-padding bg-light">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5" data-aos="fade-up">How It Works</h2>
+        <div class="row text-center">
+            <div class="col-md-3" data-aos="fade-up">
+                <div class="step-circle">1</div>
+                <h5 class="mt-3">Enter Details</h5>
+                <p class="text-muted">Fill in property features.</p>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="step-circle">2</div>
+                <h5 class="mt-3">AI Predicts</h5>
+                <p class="text-muted">Model analyses & predicts price.</p>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="step-circle">3</div>
+                <h5 class="mt-3">View Result</h5>
+                <p class="text-muted">See estimated price & insights.</p>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="step-circle">4</div>
+                <h5 class="mt-3">Download Report</h5>
+                <p class="text-muted">Get a professional PDF.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Project -->
+<section id="about" class="section-padding bg-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <h2 class="fw-bold mb-3">About the Project</h2>
+                <p class="text-muted fs-5">HousePredictor Pro is a full‑stack machine learning application built with Django and scikit‑learn. It uses real estate features to predict property prices with high accuracy.</p>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> Random Forest (R² 0.98)</li>
+                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> One‑hot encoding with unknown handling</li>
+                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> Complete admin panel & user dashboard</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 text-center" data-aos="fade-left">
+                <img src="https://placehold.co/500x350?text=ML+Model+Visual" alt="Project" class="img-fluid rounded-4 shadow" style="max-width: 80%;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ML Models -->
+<section id="models" class="section-padding bg-light">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Machine Learning Models</h2>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="glass-card p-4 text-center">
+                    <i class="bi bi-graph-up display-5 text-primary"></i>
+                    <h5 class="mt-3">Linear Regression</h5>
+                    <p>Baseline model for price estimation.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="glass-card p-4 text-center">
+                    <i class="bi bi-tree-fill display-5 text-success"></i>
+                    <h5 class="mt-3">Decision Tree</h5>
+                    <p>Captures non‑linear relationships.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="glass-card p-4 text-center">
+                    <i class="bi bi-diagram-3-fill display-5 text-accent"></i>
+                    <h5 class="mt-3">Random Forest</h5>
+                    <p>Ensemble method — highest accuracy.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Screenshots -->
+<section id="screenshots" class="section-padding bg-white">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5" data-aos="fade-up">App Screenshots</h2>
+        <div class="row g-4">
+            <div class="col-md-3" data-aos="zoom-in"><img src="https://placehold.co/400x300?text=Dashboard" class="img-fluid rounded-4 shadow" alt=""></div>
+            <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100"><img src="https://placehold.co/400x300?text=Prediction" class="img-fluid rounded-4 shadow" alt=""></div>
+            <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200"><img src="https://placehold.co/400x300?text=Analytics" class="img-fluid rounded-4 shadow" alt=""></div>
+            <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300"><img src="https://placehold.co/400x300?text=Admin" class="img-fluid rounded-4 shadow" alt=""></div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section-padding bg-light">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Frequently Asked Questions</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item faq-item">
+                        <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">How accurate is the prediction?</button></h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">Our Random Forest model achieves an R² score of 0.98, meaning it explains 98% of the variance in house prices.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item faq-item">
+                        <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">What features does the model use?</button></h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">Square footage, number of bedrooms, bathrooms, age of the house, and location.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item faq-item">
+                        <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Can I upload my own dataset?</button></h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">Yes! The admin panel allows dataset upload and model retraining.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section-padding bg-white">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4" data-aos="fade-up">Get In Touch</h2>
+        <p class="lead text-muted mb-4">Have questions or suggestions? We'd love to hear from you.</p>
+        <a href="mailto:contact@housepredictorpro.com" class="btn btn-primary btn-lg px-5" data-aos="zoom-in">contact@housepredictorpro.com</a>
+    </div>
+</section>
+
+<!-- Statistics -->
+<section id="stats" class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-6 col-md-3" data-aos="flip-left"><h2 class="display-4 fw-bold">500+</h2><p>Users</p></div>
+            <div class="col-6 col-md-3" data-aos="flip-left" data-aos-delay="100"><h2 class="display-4 fw-bold">5k+</h2><p>Predictions</p></div>
+            <div class="col-6 col-md-3" data-aos="flip-left" data-aos-delay="200"><h2 class="display-4 fw-bold">98%</h2><p>R² Accuracy</p></div>
+            <div class="col-6 col-md-3" data-aos="flip-left" data-aos-delay="300"><h2 class="display-4 fw-bold">3</h2><p>ML Models</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section-padding bg-white">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5" data-aos="fade-up">What Users Say</h2>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up"><div class="glass-card p-4"><p class="fst-italic">"Incredibly accurate! Helped me price my house correctly."</p><strong>- Priya S.</strong></div></div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100"><div class="glass-card p-4"><p class="fst-italic">"Great for investment analysis. The CSV upload is a lifesaver."</p><strong>- Rohan M.</strong></div></div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200"><div class="glass-card p-4"><p class="fst-italic">"Best ML project I've seen. Perfect for final year."</p><strong>- Prof. Kumar</strong></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-5 bg-gradient-primary text-white text-center">
+    <div class="container" data-aos="zoom-in">
+        <h2 class="fw-bold">Ready to Predict Your House Price?</h2>
+        <p class="lead">Start for free, no credit card required.</p>
+        <a href="{% url 'signup' %}" class="btn btn-accent btn-lg px-5 py-3">Get Started Now</a>
+    </div>
+</section>
+{% endblock %}
